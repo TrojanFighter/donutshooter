@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\MusketeerOrder\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_DonutShooter.1531391891.00" t="ExcludeRecursive" />
+    <e p="F:\UnityProjects\donutshooter\donutshooter" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Plugins" t="Include">
+          <e p="Editor" t="Include">
+            <e p="JetBrains" t="Include">
+              <e p="Unity3DRider.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="AudioManager.cs" t="Include" />
+          <e p="Base" t="Include">
+            <e p="BaseValue.cs" t="Include" />
+          </e>
+          <e p="donut.cs" t="Include" />
+          <e p="donut1.cs" t="Include" />
+          <e p="donut2.cs" t="Include" />
+          <e p="donut_reload.cs" t="Include" />
+          <e p="endingscore.cs" t="Include" />
+          <e p="game_manager.cs" t="Include" />
+          <e p="gamestart.cs" t="Include" />
+          <e p="player.cs" t="Include" />
+          <e p="reloadpointbehave.cs" t="Include" />
+          <e p="reloadspwan.cs" t="Include" />
+          <e p="score.cs" t="Include" />
+          <e p="zombie.cs" t="Include" />
+          <e p="zombie1.cs" t="Include" />
+          <e p="zombie2.cs" t="Include" />
+          <e p="zombie_spawner.cs" t="Include" />
+        </e>
+      </e>
+      <e p="DonutShooter.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+﻿namespace DonutShooter.Base
+{
+
+    public static class BaseValue
+    {
+        public static float shootingTimeGap = 0.4f;
+        public static float lastTimeShot = 0f;
+    }
+}

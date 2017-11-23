@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DonutShooter.Base;
 
 public class player : MonoBehaviour {
     private GameObject score;
@@ -58,7 +59,7 @@ public class player : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         donutdisplay.text = donutnum.ToString();
-        shoottimer += 1;
+        //shoottimer += 1;
         //movement
         if (Input.GetKey(KeyCode.W))
         {
@@ -85,9 +86,11 @@ public class player : MonoBehaviour {
         // shooting donut
         if (Input.GetKey(KeyCode.Space)&&(donutnum>0))
         {
+            if(Time.time-BaseValue.lastTimeShot>BaseValue.shootingTimeGap)
             //the greater the number, the slower of shoot rate;kinda anti-intuitive...
-            if (shoottimer%shootrate==0)
+            //if (shoottimer%shootrate==0)
             {
+                BaseValue.lastTimeShot = Time.time;
                 score.SendMessage("shoot");
                 if (donutType == 1)
                 {
