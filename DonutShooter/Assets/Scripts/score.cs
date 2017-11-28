@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DonutShooter.Base;
 using UnityEngine;
 
 
 public class score : MonoBehaviour
 {
-    private int points;
+    //private int points;
     private int love;
     public TextMesh scorer;
     public TextMesh lovemesh;
@@ -21,8 +22,8 @@ public class score : MonoBehaviour
 
     void killed()
     {
-        points += 1;
-        scorer.text = points.ToString();
+        BaseValue.lastScore += 1;
+        scorer.text = BaseValue.lastScore.ToString();
     }
     void returned()
     {

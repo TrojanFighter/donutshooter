@@ -19,8 +19,8 @@ public class endingscore : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Application.LoadLevel("Main Game");
-            if(finalscore!=null)
-	        DestroyObject(finalscore);
+            //if(finalscore!=null)
+	        //DestroyObject(finalscore);
         }
 		
 	}

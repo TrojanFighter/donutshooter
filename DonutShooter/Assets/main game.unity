@@ -369,6 +369,11 @@ Prefab:
       propertyPath: m_Name
       value: chair (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 50880965033703394, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e, type: 2}
   m_IsPrefabParent: 0
@@ -624,6 +629,11 @@ Prefab:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50880965033703394, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e, type: 2}
   m_IsPrefabParent: 0
@@ -995,7 +1005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &681310945
 Transform:
   m_ObjectHideFlags: 0
@@ -1071,6 +1081,11 @@ Prefab:
       propertyPath: m_Name
       value: chair (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 50880965033703394, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e, type: 2}
   m_IsPrefabParent: 0
@@ -1137,6 +1152,11 @@ Prefab:
     - target: {fileID: 4324778406915810, guid: 513baf5bd35b4d44196d27996908be27, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.7257721
+      objectReference: {fileID: 0}
+    - target: {fileID: 114399135702680616, guid: 513baf5bd35b4d44196d27996908be27,
+        type: 2}
+      propertyPath: m_ColorState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 513baf5bd35b4d44196d27996908be27, type: 2}
@@ -1308,6 +1328,11 @@ Prefab:
     - target: {fileID: 212966160871100234, guid: 21db4bd0b8f2b4b47aa8666ff28786cd,
         type: 2}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306597672960520, guid: 21db4bd0b8f2b4b47aa8666ff28786cd,
+        type: 2}
+      propertyPath: m_ColorState
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1558,6 +1583,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.7257721
       objectReference: {fileID: 0}
+    - target: {fileID: 114399135702680616, guid: 513baf5bd35b4d44196d27996908be27,
+        type: 2}
+      propertyPath: m_ColorState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 513baf5bd35b4d44196d27996908be27, type: 2}
   m_IsPrefabParent: 0
@@ -1624,6 +1654,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50880965033703394, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e, type: 2}
   m_IsPrefabParent: 0
@@ -2122,6 +2157,7 @@ GameObject:
   - component: {fileID: 1262666359}
   - component: {fileID: 1262666361}
   - component: {fileID: 1262666360}
+  - component: {fileID: 1262666362}
   m_Layer: 0
   m_Name: scorer
   m_TagString: Untagged
@@ -2256,6 +2292,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1262666362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262666357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8654db711d76e4abda8fd517a240ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1339705669 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4705721023971802, guid: 9431b4ee48a16054cb1b8a71d9d55c78,
@@ -2305,6 +2352,11 @@ Prefab:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50302157749664724, guid: 75aa6a874106890409d7aae4c81ba26f,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75aa6a874106890409d7aae4c81ba26f, type: 2}
   m_IsPrefabParent: 0
@@ -2579,6 +2631,11 @@ Prefab:
       propertyPath: m_Name
       value: chair (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 50880965033703394, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e, type: 2}
   m_IsPrefabParent: 0
@@ -2875,6 +2932,11 @@ Prefab:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50302157749664724, guid: 75aa6a874106890409d7aae4c81ba26f,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75aa6a874106890409d7aae4c81ba26f, type: 2}
   m_IsPrefabParent: 0
@@ -3275,6 +3337,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.7257721
       objectReference: {fileID: 0}
+    - target: {fileID: 114399135702680616, guid: 513baf5bd35b4d44196d27996908be27,
+        type: 2}
+      propertyPath: m_ColorState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 513baf5bd35b4d44196d27996908be27, type: 2}
   m_IsPrefabParent: 0
@@ -3419,6 +3486,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.7257721
       objectReference: {fileID: 0}
+    - target: {fileID: 114223361733423694, guid: d8e6358a2174e43449fc9bd60b50598c,
+        type: 2}
+      propertyPath: m_ColorState
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8e6358a2174e43449fc9bd60b50598c, type: 2}
   m_IsPrefabParent: 0
@@ -3475,6 +3547,11 @@ Prefab:
       propertyPath: m_Name
       value: chair (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 50880965033703394, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ab8fa432d6a0d449afd3fb58aa6e85e, type: 2}
   m_IsPrefabParent: 0
@@ -3531,6 +3608,11 @@ Prefab:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 50302157749664724, guid: 75aa6a874106890409d7aae4c81ba26f,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75aa6a874106890409d7aae4c81ba26f, type: 2}
   m_IsPrefabParent: 0
@@ -3601,6 +3683,11 @@ Prefab:
     - target: {fileID: 212966160871100234, guid: 21db4bd0b8f2b4b47aa8666ff28786cd,
         type: 2}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114306597672960520, guid: 21db4bd0b8f2b4b47aa8666ff28786cd,
+        type: 2}
+      propertyPath: m_ColorState
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3789,6 +3876,11 @@ Prefab:
     - target: {fileID: 4450279898050486, guid: d8e6358a2174e43449fc9bd60b50598c, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.7257721
+      objectReference: {fileID: 0}
+    - target: {fileID: 114223361733423694, guid: d8e6358a2174e43449fc9bd60b50598c,
+        type: 2}
+      propertyPath: m_ColorState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8e6358a2174e43449fc9bd60b50598c, type: 2}

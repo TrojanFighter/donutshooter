@@ -21,28 +21,29 @@ public class donut : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        lifespan -= Time.deltaTime;
+        /*lifespan -= Time.deltaTime;
         if (lifespan <= 0)
         {
             Destroy(this.gameObject);
-        }
+        }*/
 		
 	}
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject hitObject = collision.collider.gameObject;
+        GameObject hitObject = collision.gameObject;
         if (hitObject.GetComponent<zombie>())
         {
+            hitObject.GetComponent<zombie>().HitByColor(m_ColorState);
             if (hitObject.GetComponent<zombie>().m_ColorState == m_ColorState)
             {
                 Destroy(this.gameObject);
             }
-            if (hitObject.GetComponent<zombie>().m_ColorState != m_ColorState)
+            /*if (hitObject.GetComponent<zombie>().m_ColorState != m_ColorState)
             {
                 rb.velocity = new Vector2(-8, 5);
                 rb.angularVelocity = 720.0f;
                 m_collider.enabled = false; //!m_collider.enabled;
-            }
+            }*/
         }
        
     }

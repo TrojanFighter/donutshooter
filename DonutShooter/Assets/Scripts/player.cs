@@ -17,7 +17,6 @@ public class player : MonoBehaviour
     public GameObject donut;
     public GameObject donut2;
     public GameObject donut3;
-    private int donutType = 1;
     public int shootrate = 1;
     private int shoottimer;
     public int donutnum;
@@ -34,33 +33,33 @@ public class player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         donutcate = GameObject.Find("indicator").GetComponent<SpriteRenderer>();
 	}
+
+    public void ChangeColorState(ColorState colorState)
+    {
+        m_ColorState = colorState;
+        donutnum = refill;
+        switch (colorState)
+        {
+            case ColorState.Red: 
+                donutcate.sprite = do1;
+                break;
+            case ColorState.Green: 
+                donutcate.sprite = do2;
+                break;
+            case ColorState.Blue: 
+                donutcate.sprite = do3;
+                break;
+        }
+        
+        //score.SendMessage("reload");
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject hitObject = collision.collider.gameObject;
-        if (hitObject.tag == "reload")
+        if (hitObject.GetComponent<reloadpointbehave>())
         {
-            m_ColorState = ColorState.Red;
-            donutType = 1;
-            donutnum = refill;
-            donutcate.sprite = do1;
-            score.SendMessage("reload");
-        }
-        if (hitObject.tag == "reload2")
-        {
-            m_ColorState = ColorState.Green;
-            donutType = 2;
-            donutnum = refill;
-            donutcate.sprite = do2;
-            score.SendMessage("reload");
-
-        }
-        if (hitObject.tag == "reload3")
-        {
-            m_ColorState = ColorState.Blue;
-            donutType = 3;
-            donutnum = refill;
-            donutcate.sprite = do3;
-            score.SendMessage("reload");
+            ChangeColorState(hitObject.GetComponent<reloadpointbehave>().m_ColorState);
         }
         if (hitObject.GetComponent<ReturnArea>())
         {
@@ -168,21 +167,21 @@ public class player : MonoBehaviour
             {
                 BaseValue.lastTimeShot = Time.time;
                 score.SendMessage("shoot");
-                if (donutType == 1)
+                if (m_ColorState == ColorState.Red)
                 {
                     Vector3 newPos = new Vector3(rb.position.x+1.0f, rb.position.y, 0);
                     Instantiate(donut, newPos, Quaternion.identity);
                     donutnum -= 1;
                     shoottimer = 0;
                 }
-                if (donutType == 2)
+                if (m_ColorState == ColorState.Green)
                 {
                     Vector3 newPos = new Vector3(rb.position.x + 1.0f, rb.position.y, 0);
                     Instantiate(donut2, newPos, Quaternion.identity);
                     donutnum -= 1;
                     shoottimer = 0;
                 }
-                if (donutType == 3)
+                if (m_ColorState == ColorState.Blue)
                 {
                     Vector3 newPos = new Vector3(rb.position.x + 1.0f, rb.position.y, 0);
                     Instantiate(donut3, newPos, Quaternion.identity);

@@ -20,11 +20,8 @@
           </e>
           <e p="BaseArea.cs" t="Include" />
           <e p="donut.cs" t="Include" />
-          <e p="donut1.cs" t="Include" />
-          <e p="donut2.cs" t="Include" />
-          <e p="donut_reload.cs" t="Include" />
           <e p="endingscore.cs" t="Include" />
-          <e p="game_manager.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="gamestart.cs" t="Include" />
           <e p="player.cs" t="Include" />
           <e p="reloadpointbehave.cs" t="Include" />
@@ -32,8 +29,6 @@
           <e p="ReturnArea.cs" t="Include" />
           <e p="score.cs" t="Include" />
           <e p="zombie.cs" t="Include" />
-          <e p="zombie1.cs" t="Include" />
-          <e p="zombie2.cs" t="Include" />
           <e p="zombie_spawner.cs" t="Include" />
         </e>
       </e>

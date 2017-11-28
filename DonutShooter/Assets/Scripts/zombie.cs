@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DonutShooter.Base;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class zombie : MonoBehaviour {
@@ -62,6 +63,7 @@ public class zombie : MonoBehaviour {
         GameObject hitObject = collision.collider.gameObject;
         if (hitObject.GetComponent<donut>())
         {
+            /*
             //if (collision.collider.tag == "bullet")
             if(hitObject.GetComponent<donut>().m_ColorState==m_ColorState)
             {
@@ -86,10 +88,12 @@ public class zombie : MonoBehaviour {
             {
                 hitpoints -= 1;
                 score.SendMessage("hit");
-            }
+            }*/
+            HitByColor(hitObject.GetComponent<donut>().m_ColorState);
         }
         else if (hitObject.GetComponent<player>())
         {
+            /*
             if(hitObject.GetComponent<player>().m_ColorState==m_ColorState)
             {
                 //get the right donut, and turn back.
@@ -114,8 +118,36 @@ public class zombie : MonoBehaviour {
                 hitpoints -= 1;
                 score.SendMessage("hit");
             }
+            */
+            HitByColor(hitObject.GetComponent<player>().m_ColorState);
+            hitObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-200f,0));
         }
 
+    }
 
+    public void HitByColor(ColorState colorState)
+    {
+        if (m_ColorState == colorState)
+            //get the right donut, and turn back.
+        {
+            hitbyright = true;
+            //m_collider.enabled = !m_collider.enabled;
+            score.SendMessage("returned");
+            score.SendMessage("getheart");
+            if (!hitten)
+            {
+                flip = this.gameObject.transform.localScale.x;
+                this.gameObject.transform.localScale += new Vector3(-flip * 2, 0, 0);
+                hitten = true;
+            }
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2.5f, 0);
+            love1 = Instantiate(love, pos, Quaternion.identity);
+            love1.transform.parent = this.transform;
+        }
+        else
+        {
+            hitpoints -= 1;
+            //score.SendMessage("hit");
+        }
     }
 }
