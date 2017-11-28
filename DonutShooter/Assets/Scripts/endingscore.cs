@@ -7,8 +7,11 @@ public class endingscore : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         finalscore = GameObject.Find("scorer");
-        finalscore.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
-        finalscore.transform.position = new Vector3(26, -28, -4);
+		if (finalscore != null)
+		{
+			finalscore.transform.localScale += new Vector3(1.5f, 1.5f, 1.5f);
+			finalscore.transform.position = new Vector3(26, -28, -4);
+		}
 	}
 	
 	// Update is called once per frame
@@ -16,7 +19,8 @@ public class endingscore : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Application.LoadLevel("Main Game");
-            DestroyObject(finalscore);
+            if(finalscore!=null)
+	        DestroyObject(finalscore);
         }
 		
 	}

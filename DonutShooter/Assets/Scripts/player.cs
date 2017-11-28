@@ -6,6 +6,7 @@ using DonutShooter.Base;
 public class player : MonoBehaviour
 {
     public ColorState m_ColorState=ColorState.None;
+    public GameObject ballSprite;
     private GameObject score;
     public bool isRolling = false;
     public bool towardsRight = false;
@@ -65,6 +66,7 @@ public class player : MonoBehaviour
         {
             isRolling = true;
             towardsRight = false;
+            rb.AddForce(new Vector2(-100f,0));
         }
         if (hitObject.GetComponent<BaseArea>())
         {
@@ -80,6 +82,7 @@ public class player : MonoBehaviour
         {
             isRolling = true;
             towardsRight = true;
+            rb.AddForce(new Vector2(100f,0));
         }
     }
     void OnTriggerEnter2D(Collider2D collider)
@@ -121,27 +124,39 @@ public class player : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, 0);
             }
+            ballSprite.transform.eulerAngles = Vector3.zero;
         }
         else
         {
-            float upspeed = 0f;
+            float upspeed = 0f, rightspeed = 0f;
             if (Input.GetKey(KeyCode.W))
             {
-                upspeed=movespeedy;
+                upspeed+=movespeedy*Time.deltaTime;
 
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                upspeed=-movespeedy;
+                upspeed+=-movespeedy*Time.deltaTime;
 
+            }
+            
+            if (Input.GetKey(KeyCode.A))
+            {
+                rightspeed= -movespeedx*Time.deltaTime;
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                rightspeed= movespeedx*Time.deltaTime;
             }
             if (towardsRight)
             {
-                rb.velocity = new Vector2(movespeedy, upspeed);
+                rb.velocity = new Vector2(rb.velocity.x+rightspeed,rb.velocity.y+ upspeed);
+                ballSprite.transform.eulerAngles = new Vector3(0,0, ballSprite.transform.eulerAngles.z-10);
             }
             else
             {
-                rb.velocity = new Vector2(-movespeedy, upspeed);
+                rb.velocity = new Vector2(rb.velocity.x+rightspeed,rb.velocity.y+ upspeed);
+                ballSprite.transform.eulerAngles = new Vector3(0,0, ballSprite.transform.eulerAngles.z+10);
             }
         }
         // shooting donut

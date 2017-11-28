@@ -226,7 +226,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 90323145}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1442,7 +1442,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 982716617}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2410,7 +2410,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9650b7f705a78174c9b3af087ac75e33, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3067,7 +3067,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1751689160}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2a50d40e90bfb8b428b6baa5857bc07b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3166,31 +3166,6 @@ Prefab:
     - target: {fileID: 4551719807873728, guid: 79d6d1df7248e344b9cdf2ca4e1ea065, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641555665561168, guid: 79d6d1df7248e344b9cdf2ca4e1ea065,
-        type: 2}
-      propertyPath: movespeedx
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114641555665561168, guid: 79d6d1df7248e344b9cdf2ca4e1ea065,
-        type: 2}
-      propertyPath: movespeedy
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 212247277228114914, guid: 79d6d1df7248e344b9cdf2ca4e1ea065,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 212247277228114914, guid: 79d6d1df7248e344b9cdf2ca4e1ea065,
-        type: 2}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50821061285153092, guid: 79d6d1df7248e344b9cdf2ca4e1ea065,
-        type: 2}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79d6d1df7248e344b9cdf2ca4e1ea065, type: 2}

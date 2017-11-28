@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class zombie : MonoBehaviour {
     public ColorState m_ColorState = ColorState.Red;
+    public bool hitten = false;
     float flip;
     public int hitpoints;
     public TextMesh hittext;
@@ -69,8 +70,12 @@ public class zombie : MonoBehaviour {
                 //m_collider.enabled = !m_collider.enabled;
                 score.SendMessage("returned");
                 score.SendMessage("getheart");
-                flip = this.gameObject.transform.localScale.x;
-                this.gameObject.transform.localScale += new Vector3(-flip * 2, 0, 0);
+                if (!hitten)
+                {
+                    flip = this.gameObject.transform.localScale.x;
+                    this.gameObject.transform.localScale += new Vector3(-flip * 2, 0, 0);
+                    hitten = true;
+                }
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2.5f, 0);
                 love1 = Instantiate(love, pos, Quaternion.identity);
                 love1.transform.parent = this.transform;
@@ -93,7 +98,11 @@ public class zombie : MonoBehaviour {
                 score.SendMessage("returned");
                 score.SendMessage("getheart");
                 flip = this.gameObject.transform.localScale.x;
-                this.gameObject.transform.localScale += new Vector3(-flip * 2, 0, 0);
+                if (!hitten)
+                {
+                    this.gameObject.transform.localScale = new Vector3(-flip, this.gameObject.transform.localScale.y,this.gameObject.transform.localScale.z);
+                    hitten = true;
+                }
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2.5f, 0);
                 love1 = Instantiate(love, pos, Quaternion.identity);
                 love1.transform.parent = this.transform;

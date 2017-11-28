@@ -41,7 +41,7 @@ public class donut : MonoBehaviour
             {
                 rb.velocity = new Vector2(-8, 5);
                 rb.angularVelocity = 720.0f;
-                m_collider.enabled = !m_collider.enabled;
+                m_collider.enabled = false; //!m_collider.enabled;
             }
         }
        
