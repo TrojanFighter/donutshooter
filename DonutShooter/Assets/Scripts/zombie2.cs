@@ -64,7 +64,7 @@ public class zombie2 : MonoBehaviour {
         {
             //get the right donut, and turn back.
             hitbyright = true;
-            m_collider.enabled = !m_collider.enabled;
+            //m_collider.enabled = !m_collider.enabled;
             score.SendMessage("returned");
             score.SendMessage("getheart");
             flip = this.gameObject.transform.localScale.x;

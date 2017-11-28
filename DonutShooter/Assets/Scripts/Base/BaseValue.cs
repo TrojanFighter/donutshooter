@@ -6,4 +6,12 @@
         public static float shootingTimeGap = 0.4f;
         public static float lastTimeShot = 0f;
     }
+
+    public enum ColorState
+    {
+        None=0,
+        Red,
+        Green,
+        Blue
+    }
 }

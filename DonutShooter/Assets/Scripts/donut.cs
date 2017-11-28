@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DonutShooter.Base;
 using UnityEngine;
 
-public class donut : MonoBehaviour {
+public class donut : MonoBehaviour
+{
+    public ColorState m_ColorState = ColorState.Red;
     private Rigidbody2D rb;
     public float bulletspeed;
     public float lifespan;
@@ -27,25 +30,20 @@ public class donut : MonoBehaviour {
 	}
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "monster1")
+        GameObject hitObject = collision.collider.gameObject;
+        if (hitObject.GetComponent<zombie>())
         {
-            Destroy(this.gameObject);
-        }
-        if (collision.collider.tag == "monster2")
-        {
-            rb.velocity = new Vector2(-8, 5);
-            rb.angularVelocity = 720.0f;
-            m_collider.enabled = !m_collider.enabled;
-        
-        }
-        if (collision.collider.tag == "monster3")
-        {
-            rb.velocity = new Vector2(-8, 5);
-            rb.angularVelocity = 720; 
-            m_collider.enabled = !m_collider.enabled;
-
+            if (hitObject.GetComponent<zombie>().m_ColorState == m_ColorState)
+            {
+                Destroy(this.gameObject);
+            }
+            if (hitObject.GetComponent<zombie>().m_ColorState != m_ColorState)
+            {
+                rb.velocity = new Vector2(-8, 5);
+                rb.angularVelocity = 720.0f;
+                m_collider.enabled = !m_collider.enabled;
+            }
         }
        
-
     }
 }

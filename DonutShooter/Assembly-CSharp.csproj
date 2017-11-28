@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Base\BaseValue.cs" />
+    <Compile Include="Assets\Scripts\BaseArea.cs" />
     <Compile Include="Assets\Scripts\donut.cs" />
     <Compile Include="Assets\Scripts\donut_reload.cs" />
     <Compile Include="Assets\Scripts\donut1.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Assets\Scripts\player.cs" />
     <Compile Include="Assets\Scripts\reloadpointbehave.cs" />
     <Compile Include="Assets\Scripts\reloadspwan.cs" />
+    <Compile Include="Assets\Scripts\ReturnArea.cs" />
     <Compile Include="Assets\Scripts\score.cs" />
     <Compile Include="Assets\Scripts\zombie.cs" />
     <Compile Include="Assets\Scripts\zombie_spawner.cs" />

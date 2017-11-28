@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212747031365144950}
   - component: {fileID: 61453937208746214}
   - component: {fileID: 50637642724606850}
-  - component: {fileID: 114214241113121306}
+  - component: {fileID: 114443899845207928}
   m_Layer: 0
   m_Name: donut 1
   m_TagString: bullet2
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
---- !u!114 &114214241113121306
+--- !u!114 &114443899845207928
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,9 +96,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1897496874754956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0525f6e353f7bb4e98e84a345a4120b, type: 3}
+  m_Script: {fileID: 11500000, guid: fd9eacf203279eb408fe1b1a5f44c7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ColorState: 2
   bulletspeed: 15
   lifespan: 2
 --- !u!212 &212747031365144950
@@ -110,6 +111,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -125,6 +127,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

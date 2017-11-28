@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DonutShooter.Base;
 using UnityEngine;
 
 public class zombie : MonoBehaviour {
+    public ColorState m_ColorState = ColorState.Red;
     float flip;
     public int hitpoints;
     public TextMesh hittext;
@@ -56,42 +58,55 @@ public class zombie : MonoBehaviour {
 	}
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "bullet")
+        GameObject hitObject = collision.collider.gameObject;
+        if (hitObject.GetComponent<donut>())
         {
-            //get the right donut, and turn back.
-            hitbyright = true;
-            m_collider.enabled = !m_collider.enabled;
-            score.SendMessage("returned");
-            score.SendMessage("getheart");
-            flip = this.gameObject.transform.localScale.x;
-            this.gameObject.transform.localScale += new Vector3(-flip * 2, 0, 0);
-            Vector3 pos = new Vector3(transform.position.x, transform.position.y+2.5f, 0);
-            love1 = Instantiate(love, pos, Quaternion.identity);
-            love1.transform.parent = this.transform;
+            //if (collision.collider.tag == "bullet")
+            if(hitObject.GetComponent<donut>().m_ColorState==m_ColorState)
+            {
+                //get the right donut, and turn back.
+                hitbyright = true;
+                //m_collider.enabled = !m_collider.enabled;
+                score.SendMessage("returned");
+                score.SendMessage("getheart");
+                flip = this.gameObject.transform.localScale.x;
+                this.gameObject.transform.localScale += new Vector3(-flip * 2, 0, 0);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2.5f, 0);
+                love1 = Instantiate(love, pos, Quaternion.identity);
+                love1.transform.parent = this.transform;
 
-            
+
+            }
+            if(hitObject.GetComponent<donut>().m_ColorState!=m_ColorState)
+            {
+                hitpoints -= 1;
+                score.SendMessage("hit");
+            }
         }
-        if (collision.collider.tag == "bullet2")
+        else if (hitObject.GetComponent<player>())
         {
-           hitpoints -= 1;
-          score.SendMessage("hit");
+            if(hitObject.GetComponent<player>().m_ColorState==m_ColorState)
+            {
+                //get the right donut, and turn back.
+                hitbyright = true;
+                //m_collider.enabled = !m_collider.enabled;
+                score.SendMessage("returned");
+                score.SendMessage("getheart");
+                flip = this.gameObject.transform.localScale.x;
+                this.gameObject.transform.localScale += new Vector3(-flip * 2, 0, 0);
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2.5f, 0);
+                love1 = Instantiate(love, pos, Quaternion.identity);
+                love1.transform.parent = this.transform;
 
-        }
-        if (collision.collider.tag == "bullet3")
-        {
-            hitpoints -= 1;
-       
-            score.SendMessage("hit");
 
+            }
+            if(hitObject.GetComponent<player>().m_ColorState!=m_ColorState)
+            {
+                hitpoints -= 1;
+                score.SendMessage("hit");
+            }
         }
-        //when spawned, avoid overlap
-        if (collision.collider.tag == "monster1")
-        {
-            Destroy(this.gameObject);
 
-           
-        }
-      
 
     }
 }

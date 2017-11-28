@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using DonutShooter.Base;
 
-public class player : MonoBehaviour {
+public class player : MonoBehaviour
+{
+    public ColorState m_ColorState=ColorState.None;
     private GameObject score;
+    public bool isRolling = false;
+    public bool towardsRight = false;
     public float movespeedx;
     public float movespeedy;
     private Rigidbody2D rb;
@@ -31,28 +35,60 @@ public class player : MonoBehaviour {
 	}
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "reload")
+        GameObject hitObject = collision.collider.gameObject;
+        if (hitObject.tag == "reload")
         {
+            m_ColorState = ColorState.Red;
             donutType = 1;
             donutnum = refill;
             donutcate.sprite = do1;
             score.SendMessage("reload");
         }
-        if (collision.collider.tag == "reload2")
+        if (hitObject.tag == "reload2")
         {
+            m_ColorState = ColorState.Green;
             donutType = 2;
             donutnum = refill;
             donutcate.sprite = do2;
             score.SendMessage("reload");
 
         }
-        if (collision.collider.tag == "reload3")
+        if (hitObject.tag == "reload3")
         {
+            m_ColorState = ColorState.Blue;
             donutType = 3;
             donutnum = refill;
             donutcate.sprite = do3;
             score.SendMessage("reload");
+        }
+        if (hitObject.GetComponent<ReturnArea>())
+        {
+            isRolling = true;
+            towardsRight = false;
+        }
+        if (hitObject.GetComponent<BaseArea>())
+        {
+            isRolling = false;
+            towardsRight = true;
+        }
+    }
 
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        GameObject hitObject = collider.gameObject;
+        if (hitObject.GetComponent<BaseArea>())
+        {
+            isRolling = true;
+            towardsRight = true;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        GameObject hitObject = collider.gameObject;
+        if (hitObject.GetComponent<BaseArea>())
+        {
+            isRolling = false;
+            towardsRight = true;
         }
     }
 
@@ -61,27 +97,52 @@ public class player : MonoBehaviour {
         donutdisplay.text = donutnum.ToString();
         //shoottimer += 1;
         //movement
-        if (Input.GetKey(KeyCode.W))
+        if (!isRolling)//(transform.position.x <= -6.5f))
         {
-            rb.velocity = new Vector2(0,movespeedy);
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.velocity = new Vector2(0, movespeedy);
 
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            rb.velocity = new Vector2(0, -movespeedy);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                rb.velocity = new Vector2(0, -movespeedy);
 
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = new Vector2(-movespeedx, 0);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rb.velocity = new Vector2(movespeedx, 0);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                rb.velocity = new Vector2(-movespeedx, 0);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                rb.velocity = new Vector2(movespeedx, 0);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, 0);
+            }
         }
         else
         {
-            rb.velocity = new Vector2(0, 0);
+            float upspeed = 0f;
+            if (Input.GetKey(KeyCode.W))
+            {
+                upspeed=movespeedy;
+
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                upspeed=-movespeedy;
+
+            }
+            if (towardsRight)
+            {
+                rb.velocity = new Vector2(movespeedy, upspeed);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-movespeedy, upspeed);
+            }
         }
         // shooting donut
         if (Input.GetKey(KeyCode.Space)&&(donutnum>0))
