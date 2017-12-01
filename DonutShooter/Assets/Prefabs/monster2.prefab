@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171154409518568}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.52961, y: 2.5723, z: 0}
+  m_LocalPosition: {x: -0.52961, y: -2, z: 0}
   m_LocalScale: {x: 1.9379246, y: 1.937925, z: 1.937925}
   m_Children: []
   m_Father: {fileID: 4270089193978238}
@@ -208,9 +208,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ColorState: 2
+  hitten: 0
   hitpoints: 3
   hittext: {fileID: 102573841302180034}
-  movingSpeed: 0.025
+  movingSpeed: 0.8
   blood: {fileID: 1164239357549924, guid: 317f0ed83ff8ec944822ece3fadda158, type: 2}
   love: {fileID: 1253376498759346, guid: 92807ce6ca9fed343befee998ca3d09b, type: 2}
 --- !u!212 &212197623953385240

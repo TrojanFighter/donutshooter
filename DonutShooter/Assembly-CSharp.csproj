@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\reloadspwan.cs" />
     <Compile Include="Assets\Scripts\ReturnArea.cs" />
     <Compile Include="Assets\Scripts\score.cs" />
+    <Compile Include="Assets\Scripts\UI\UIFollowObject.cs" />
     <Compile Include="Assets\Scripts\zombie.cs" />
     <Compile Include="Assets\Scripts\zombie_spawner.cs" />
     <Reference Include="UnityEngine.UIAutomation">

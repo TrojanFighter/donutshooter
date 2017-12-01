@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1797530443151396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34064ad434e8ec5479142c6aa5bac5f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnmaxy: 8
-  spawnminy: -8
-  spawnDis: 15
-  monster: {fileID: 1299148039143814, guid: 5976a87b14f7b36498a86138e02b2623, type: 2}
-  spawnrate: 180
+  spawnmaxy: 7
+  spawnminy: -7
+  spawnDis: 20
+  monster: {fileID: 1299148039143814, guid: e7ee8964fcb1b2e4c98dffe54fe8a7d1, type: 2}
+  spawnrate: 200

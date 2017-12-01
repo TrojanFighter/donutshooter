@@ -281,6 +281,7 @@ MonoBehaviour:
   towardsRight: 0
   movespeedx: 20
   movespeedy: 10
+  rollspeedy: 30
   donut: {fileID: 1897496874754956, guid: c30a9cd4818630341abfdfb23bfb64e3, type: 2}
   donut2: {fileID: 1897496874754956, guid: 4264ecf4f6bf0154d9498263bb7954f5, type: 2}
   donut3: {fileID: 1897496874754956, guid: c047e715724f4ba45b7e01cb8000b2e2, type: 2}

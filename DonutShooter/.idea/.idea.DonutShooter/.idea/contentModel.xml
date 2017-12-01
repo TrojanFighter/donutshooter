@@ -28,6 +28,9 @@
           <e p="reloadspwan.cs" t="Include" />
           <e p="ReturnArea.cs" t="Include" />
           <e p="score.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="UIFollowObject.cs" t="Include" />
+          </e>
           <e p="zombie.cs" t="Include" />
           <e p="zombie_spawner.cs" t="Include" />
         </e>

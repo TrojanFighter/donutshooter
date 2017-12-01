@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class zombie : MonoBehaviour {
     public ColorState m_ColorState = ColorState.Red;
-    public bool hitten = false;
+    public bool hitten = false,isMoving=false;
     float flip;
     public int hitpoints;
     public TextMesh hittext;
     public float movingSpeed;
     GameObject score;
     Collider2D m_collider;
-    bool hitbyright;
+    bool hitbyplayer;
     public GameObject blood;
     public GameObject love;
     GameObject love1;
@@ -23,23 +23,23 @@ public class zombie : MonoBehaviour {
 	void Start () {
         score = GameObject.Find("scorer");
         m_collider = GetComponent<Collider2D>();
-        hitbyright = false;
+        hitbyplayer = false;
 
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x > -6.5f && hitbyright==false)
+        if (transform.position.x > -15f && hitbyplayer==false)
         {
-          transform.Translate(-movingSpeed, 0, Time.deltaTime);
+          transform.Translate(-movingSpeed*Time.deltaTime, 0, Time.deltaTime);
         }
-        if (transform.position.x <= -6.5f)
+        if (transform.position.x <= -15f)
         {   // game should be over by now 
             transform.Translate(0, 0, Time.deltaTime);
             Application.LoadLevel("ending");
         }
-        if (hitbyright == true)
+        if (hitbyplayer == true)
         {
             transform.Translate(0.05f, 0, Time.deltaTime);
             if (transform.position.x >= 20)
@@ -122,6 +122,17 @@ public class zombie : MonoBehaviour {
             HitByColor(hitObject.GetComponent<player>().m_ColorState);
             hitObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-200f,0));
         }
+        else if (hitObject.GetComponent<zombie>())
+        {
+            if (isMoving)
+            {
+                hitpoints = hitObject.GetComponent<zombie>().RamByZombie(hitpoints, m_ColorState);
+                if (hitpoints <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
 
     }
 
@@ -130,7 +141,7 @@ public class zombie : MonoBehaviour {
         if (m_ColorState == colorState)
             //get the right donut, and turn back.
         {
-            hitbyright = true;
+            hitbyplayer = true;
             //m_collider.enabled = !m_collider.enabled;
             score.SendMessage("returned");
             score.SendMessage("getheart");
@@ -143,11 +154,37 @@ public class zombie : MonoBehaviour {
             Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2.5f, 0);
             love1 = Instantiate(love, pos, Quaternion.identity);
             love1.transform.parent = this.transform;
+            isMoving = true;
         }
         else
         {
             hitpoints -= 1;
             //score.SendMessage("hit");
+        }
+    }
+
+    public int RamByZombie(int ramhitpoint,ColorState ramcolor)
+    {
+        if (ramcolor != m_ColorState)
+        {
+            //hitpoints -= ramhitpoint;
+            if (hitpoints < ramhitpoint)
+            {
+                ramhitpoint -= hitpoints;
+                Destroy(gameObject);
+                //Debug.Log("ramhitpoint:"+ramhitpoint+"  hitpoint left"+hitpoints+"  point left:"+(ramhitpoint - hitpoints));
+                return ramhitpoint;
+            }
+            else
+            {
+                hitpoints -= ramhitpoint;
+                return ramhitpoint;
+            }
+        }
+        else
+        {
+            hitpoints += ramhitpoint;
+            return 0;
         }
     }
 }

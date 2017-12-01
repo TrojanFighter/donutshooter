@@ -10,7 +10,6 @@ public class reloadspwan : MonoBehaviour {
     private int red;
     private int green;
     private int blue;
-    public GameObject reload0;
     public GameObject reload1;
     public GameObject reload2;
     public GameObject reload3;
@@ -24,7 +23,7 @@ public class reloadspwan : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         spawnTimer += 1;
-        if (spawnTimer % spawnRate == 0)
+        if (Time.frameCount % spawnRate == 0)
         {
             chancer = Random.Range(0, 3);
             if (chancer < 1 )

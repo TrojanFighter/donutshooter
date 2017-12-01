@@ -11,7 +11,7 @@ public class player : MonoBehaviour
     public bool isRolling = false;
     public bool towardsRight = false;
     public float movespeedx;
-    public float movespeedy;
+    public float movespeedy,rollspeedy;
     private Rigidbody2D rb;
     private SpriteRenderer donutcate;
     public GameObject donut;
@@ -81,6 +81,7 @@ public class player : MonoBehaviour
         {
             isRolling = true;
             towardsRight = true;
+            rb.gravityScale = 1;
             rb.AddForce(new Vector2(100f,0));
         }
     }
@@ -91,6 +92,7 @@ public class player : MonoBehaviour
         {
             isRolling = false;
             towardsRight = true;
+            rb.gravityScale = 0;
         }
     }
 
@@ -130,12 +132,12 @@ public class player : MonoBehaviour
             float upspeed = 0f, rightspeed = 0f;
             if (Input.GetKey(KeyCode.W))
             {
-                upspeed+=movespeedy*Time.deltaTime;
+                upspeed+=rollspeedy*Time.deltaTime;
 
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                upspeed+=-movespeedy*Time.deltaTime;
+                upspeed+=-rollspeedy*Time.deltaTime;
 
             }
             
