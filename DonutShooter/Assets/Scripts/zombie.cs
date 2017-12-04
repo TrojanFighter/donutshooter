@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using DonutShooter.Base;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class zombie : MonoBehaviour {
     public ColorState m_ColorState = ColorState.Red;
     public bool hitten = false,isMoving=false;
     float flip;
     public int hitpoints;
-    public TextMesh hittext;
+    //public TextMesh hittext;
+    public Text hittext;
     public float movingSpeed;
     GameObject score;
     Collider2D m_collider;
@@ -30,15 +32,11 @@ public class zombie : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x > -15f && hitbyplayer==false)
+        if (hitbyplayer==false)
         {
           transform.Translate(-movingSpeed*Time.deltaTime, 0, Time.deltaTime);
         }
-        if (transform.position.x <= -15f)
-        {   // game should be over by now 
-            transform.Translate(0, 0, Time.deltaTime);
-            Application.LoadLevel("ending");
-        }
+
         if (hitbyplayer == true)
         {
             transform.Translate(0.05f, 0, Time.deltaTime);
@@ -119,8 +117,8 @@ public class zombie : MonoBehaviour {
                 score.SendMessage("hit");
             }
             */
-            HitByColor(hitObject.GetComponent<player>().m_ColorState);
-            hitObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-200f,0));
+            HitByColor(hitObject.GetComponent<player>().m_ColorState,10);
+            //hitObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-200f,0));
         }
         else if (hitObject.GetComponent<zombie>())
         {
@@ -136,7 +134,7 @@ public class zombie : MonoBehaviour {
 
     }
 
-    public void HitByColor(ColorState colorState)
+    public void HitByColor(ColorState colorState,int hpHit=1)
     {
         if (m_ColorState == colorState)
             //get the right donut, and turn back.
@@ -158,7 +156,7 @@ public class zombie : MonoBehaviour {
         }
         else
         {
-            hitpoints -= 1;
+            hitpoints -= hpHit;
             //score.SendMessage("hit");
         }
     }
@@ -168,6 +166,7 @@ public class zombie : MonoBehaviour {
         if (ramcolor != m_ColorState)
         {
             //hitpoints -= ramhitpoint;
+            //if(m_ColorState==ColorState.Red)
             if (hitpoints < ramhitpoint)
             {
                 ramhitpoint -= hitpoints;

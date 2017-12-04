@@ -21,6 +21,7 @@
           <e p="BaseArea.cs" t="Include" />
           <e p="donut.cs" t="Include" />
           <e p="endingscore.cs" t="Include" />
+          <e p="EndingTrigger.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="gamestart.cs" t="Include" />
           <e p="player.cs" t="Include" />
@@ -29,6 +30,7 @@
           <e p="ReturnArea.cs" t="Include" />
           <e p="score.cs" t="Include" />
           <e p="UI" t="Include">
+            <e p="CustomCursor.cs" t="Include" />
             <e p="UIFollowObject.cs" t="Include" />
           </e>
           <e p="zombie.cs" t="Include" />

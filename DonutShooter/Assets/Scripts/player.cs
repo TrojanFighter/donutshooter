@@ -7,6 +7,7 @@ public class player : MonoBehaviour
 {
     public ColorState m_ColorState=ColorState.None;
     public GameObject ballSprite;
+    public SpriteRenderer m_spriteRenderer;
     private GameObject score;
     public bool isRolling = false;
     public bool towardsRight = false;
@@ -27,6 +28,8 @@ public class player : MonoBehaviour
     public Sprite do2;
     public Sprite do3;
 
+    public Color[] m_color;
+
 	// Use this for initialization
 	void Start () {
         score = GameObject.Find("scorer");
@@ -42,12 +45,20 @@ public class player : MonoBehaviour
         {
             case ColorState.Red: 
                 donutcate.sprite = do1;
+                m_spriteRenderer.color = m_color[0];
                 break;
             case ColorState.Green: 
                 donutcate.sprite = do2;
+                m_spriteRenderer.color = m_color[1];
                 break;
             case ColorState.Blue: 
                 donutcate.sprite = do3;
+                m_spriteRenderer.color = m_color[2];
+                break;
+            case ColorState.None: 
+                donutcate.sprite = do1;
+                m_spriteRenderer.color = Color.white;
+                donutnum = 0;
                 break;
         }
         
@@ -161,7 +172,7 @@ public class player : MonoBehaviour
             }
         }
         // shooting donut
-        if (Input.GetKey(KeyCode.Space)&&(donutnum>0))
+        if (Input.GetKey(KeyCode.Mouse0)&&(donutnum>0))
         {
             if(Time.time-BaseValue.lastTimeShot>BaseValue.shootingTimeGap)
             //the greater the number, the slower of shoot rate;kinda anti-intuitive...
@@ -169,27 +180,35 @@ public class player : MonoBehaviour
             {
                 BaseValue.lastTimeShot = Time.time;
                 score.SendMessage("shoot");
+                GameObject shotDonut=null;
                 if (m_ColorState == ColorState.Red)
                 {
                     Vector3 newPos = new Vector3(rb.position.x+1.0f, rb.position.y, 0);
-                    Instantiate(donut, newPos, Quaternion.identity);
+                    shotDonut= Instantiate(donut, newPos, Quaternion.identity);
                     donutnum -= 1;
                     shoottimer = 0;
+                    
                 }
                 if (m_ColorState == ColorState.Green)
                 {
                     Vector3 newPos = new Vector3(rb.position.x + 1.0f, rb.position.y, 0);
-                    Instantiate(donut2, newPos, Quaternion.identity);
+                    shotDonut=Instantiate(donut2, newPos, Quaternion.identity);
                     donutnum -= 1;
                     shoottimer = 0;
                 }
                 if (m_ColorState == ColorState.Blue)
                 {
                     Vector3 newPos = new Vector3(rb.position.x + 1.0f, rb.position.y, 0);
-                    Instantiate(donut3, newPos, Quaternion.identity);
+                    shotDonut=Instantiate(donut3, newPos, Quaternion.identity);
                     donutnum -= 1;
                     shoottimer = 0;
                 }
+                if(shotDonut!=null)
+                shotDonut.GetComponent<donut>().InitDonut(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
+            if (donutnum <= 0)
+            {
+                ChangeColorState(ColorState.None);
             }
         }
 

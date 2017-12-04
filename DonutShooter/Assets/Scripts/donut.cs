@@ -10,16 +10,26 @@ public class donut : MonoBehaviour
     public float bulletspeed;
     public float lifespan;
     Collider2D m_collider;
+    private bool inited = false;
 
 	// Use this for initialization
-	void Start () {
+	void Init ()
+	{
+	    if (inited) return;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(bulletspeed, 0);
+        //rb.velocity = new Vector2(bulletspeed, 0);
         m_collider = GetComponent<Collider2D>();
-        
+	    inited = true;
+	}
+
+    public void InitDonut(Vector3 target)
+    {
+        Init();
+        rb.velocity = new Vector2((target - transform.position).x,(target - transform.position).y ).normalized*20f;
+        StartCoroutine(SelfDestroy());
     }
-	
-	// Update is called once per frame
+
+    // Update is called once per frame
 	void Update () {
         /*lifespan -= Time.deltaTime;
         if (lifespan <= 0)
@@ -28,6 +38,13 @@ public class donut : MonoBehaviour
         }*/
 		
 	}
+
+    IEnumerator SelfDestroy()
+    {
+        yield return new WaitForSeconds(lifespan);
+        Destroy(gameObject);
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject hitObject = collision.gameObject;

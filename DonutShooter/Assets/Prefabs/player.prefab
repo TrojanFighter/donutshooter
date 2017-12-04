@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 50821061285153092}
   - component: {fileID: 114641555665561168}
   - component: {fileID: 61787379617393472}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,11 +209,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0.2
   m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: aab304676f3f93b4fb13043f0f692c40, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -277,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ColorState: 0
   ballSprite: {fileID: 1163140786824068}
+  m_spriteRenderer: {fileID: 212757810286991476}
   isRolling: 0
   towardsRight: 0
   movespeedx: 20
@@ -287,11 +288,15 @@ MonoBehaviour:
   donut3: {fileID: 1897496874754956, guid: c047e715724f4ba45b7e01cb8000b2e2, type: 2}
   shootrate: 30
   donutnum: 0
-  refill: 20
+  refill: 3
   donutdisplay: {fileID: 102848951889424622}
   do1: {fileID: 21300000, guid: 7fa7e8b75a0df034db2f37c95423730d, type: 3}
   do2: {fileID: 21300000, guid: 12bc25f93a9ef7a44b4f6f01620bb20d, type: 3}
   do3: {fileID: 21300000, guid: 1ffc9c6b541658f40b4646d5491cf960, type: 3}
+  m_color:
+  - {r: 0.9852941, g: 0.63754326, b: 0.63754326, a: 1}
+  - {r: 0.27205884, g: 1, b: 0.48793104, a: 1}
+  - {r: 0.57634085, g: 0.57895833, b: 0.9558824, a: 1}
 --- !u!212 &212031535406832642
 SpriteRenderer:
   m_ObjectHideFlags: 1

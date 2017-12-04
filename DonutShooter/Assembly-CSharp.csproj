@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\BaseArea.cs" />
     <Compile Include="Assets\Scripts\donut.cs" />
     <Compile Include="Assets\Scripts\endingscore.cs" />
+    <Compile Include="Assets\Scripts\EndingTrigger.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\gamestart.cs" />
     <Compile Include="Assets\Scripts\player.cs" />
@@ -64,11 +65,18 @@
     <Compile Include="Assets\Scripts\reloadspwan.cs" />
     <Compile Include="Assets\Scripts\ReturnArea.cs" />
     <Compile Include="Assets\Scripts\score.cs" />
+    <Compile Include="Assets\Scripts\UI\CustomCursor.cs" />
     <Compile Include="Assets\Scripts\UI\UIFollowObject.cs" />
     <Compile Include="Assets\Scripts\zombie.cs" />
     <Compile Include="Assets\Scripts\zombie_spawner.cs" />
-    <Reference Include="UnityEngine.UIAutomation">
-      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+    <Reference Include="Vuforia.UnityExtensions">
+      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
@@ -76,17 +84,11 @@
     <Reference Include="nunit.framework">
       <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Vuforia.UnityExtensions">
-      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIAutomation">
+      <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GoogleAudioSpatializer">
       <HintPath>D:/Program Files/Unity/Unity2017.2.0f3/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
