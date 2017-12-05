@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip getHeartSound;
     public AudioClip dedSound;
     public AudioClip reloadSound;
+    public AudioClip explodeSound;
 
 	// Audio manager, all audio are in here.
 	void Start () {
@@ -17,26 +18,30 @@ public class AudioManager : MonoBehaviour {
 
 	}
 
-    void hit()
+    public void hit()
     {
         audi.PlayOneShot(hitSound);
     }
 
-    void shoot()
+    public  void shoot()
     {
         audi.PlayOneShot(shootSound);
     }
-    void getheart()
+    public  void getheart()
     {
         audi.PlayOneShot(getHeartSound);
     }
-    void ded()
+    public void ded()
     {
         audi.PlayOneShot(dedSound);
     }
-    void reload()
+    public void reload()
     {
         audi.PlayOneShot(reloadSound);
+    }
+    public void explode()
+    {
+        audi.PlayOneShot(explodeSound);
     }
 
 }

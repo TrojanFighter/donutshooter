@@ -62,6 +62,9 @@ public class zombie : MonoBehaviour {
         Instantiate(blood, transform.position, Quaternion.identity);
         if(isExplosion)
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        
+        score.SendMessage("killed");
+        score.SendMessage("ded");
         Destroy(this.gameObject);
     }
 
@@ -134,8 +137,7 @@ public class zombie : MonoBehaviour {
             
             HitByColor(hitObject.GetComponent<player>().m_ColorState, 2);
                 Vector2 hitbackForce = new Vector2(-70f, 0);
-                if(collision.contacts.Length>0)
-                    hitbackForce=(collision.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized *70f;
+                if(collision.contacts.Length>0)hitbackForce=(collision.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized *70f;
             //Debug.Log("hitbackForce: " + hitbackForce);
             hitObject.GetComponent<Rigidbody2D>().AddForce(hitbackForce, ForceMode2D.Impulse);
             }
@@ -145,12 +147,20 @@ public class zombie : MonoBehaviour {
                 {
                     hitObject.GetComponent<player>().extradonutnum--;
                     hitObject.GetComponent<player>().donutnum =hitObject.GetComponent<player>().magazinedonutnum +hitObject.GetComponent<player>().extradonutnum;
+                    if (hitObject.GetComponent<player>().donutnum <= 0)
+                    {
+                        hitObject.GetComponent<player>().ChangeColorState(ColorState.None);
+                    }
                     HitByColor(hitObject.GetComponent<player>().m_ColorState, 10);
                 }
                 else if (hitObject.GetComponent<player>().magazinedonutnum > 0)
                 {
                     hitObject.GetComponent<player>().magazinedonutnum--;
                     hitObject.GetComponent<player>().donutnum =hitObject.GetComponent<player>().magazinedonutnum +hitObject.GetComponent<player>().extradonutnum;
+                    if (hitObject.GetComponent<player>().donutnum <= 0)
+                    {
+                        hitObject.GetComponent<player>().ChangeColorState(ColorState.None);
+                    }
                     HitByColor(hitObject.GetComponent<player>().m_ColorState, 10);
                 }
             }
@@ -182,6 +192,7 @@ public class zombie : MonoBehaviour {
             hitbyplayer = true;
             //m_collider.enabled = !m_collider.enabled;
             score.SendMessage("returned");
+            score.SendMessage("getheart");
             if (!hitten)
             {
                 flip = this.gameObject.transform.localScale.x;
@@ -200,10 +211,11 @@ public class zombie : MonoBehaviour {
             if (hitpoints <= 0)
             {
                 //Instantiate(blood, transform.position, Quaternion.identity);
-                score.SendMessage("killed");
+                //score.SendMessage("killed");
                 SelfDestory(true);
            
             }
+            score.SendMessage("hit");
             return false;
             //score.SendMessage("hit");
         }

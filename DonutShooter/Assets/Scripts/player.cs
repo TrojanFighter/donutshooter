@@ -48,31 +48,41 @@ public class player : MonoBehaviour
         switch (colorState)
         {
             case ColorState.Red: 
+                donutcate.gameObject.SetActive(true);
                 donutcate.sprite = do1;
                 m_spriteRenderer.color = m_color[0];
                 donutnum += refillnum - magazinedonutnum;
                 magazinedonutnum = refillnum;
+                score.SendMessage("reload");
+                donutdisplay.gameObject.SetActive(true);
                 break;
             case ColorState.Green: 
+                donutcate.gameObject.SetActive(true);
                 donutcate.sprite = do2;
                 m_spriteRenderer.color = m_color[1];
                 donutnum += refillnum - magazinedonutnum;
                 magazinedonutnum = refillnum;
+                score.SendMessage("reload");
+                donutdisplay.gameObject.SetActive(true);
                 break;
             case ColorState.Blue: 
+                donutcate.gameObject.SetActive(true);
                 donutcate.sprite = do3;
                 m_spriteRenderer.color = m_color[2];
                 donutnum += refillnum - magazinedonutnum;
                 magazinedonutnum = refillnum;
+                score.SendMessage("reload");
+                donutdisplay.gameObject.SetActive(true);
                 break;
-            case ColorState.None: 
-                donutcate.sprite = do1;
+            case ColorState.None:
+                donutcate.gameObject.SetActive(false);
+                donutcate.sprite = null;
                 m_spriteRenderer.color = Color.white;
                 magazinedonutnum = extradonutnum = donutnum = 0;
+                donutdisplay.gameObject.SetActive(false);
                 break;
         }
         
-        //score.SendMessage("reload");
     }
 
     void OnCollisionEnter2D(Collision2D collision)
