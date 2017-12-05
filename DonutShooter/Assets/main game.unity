@@ -919,7 +919,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: fe99db5c55005534a87f5e5e06a98085, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2345,6 +2345,7 @@ MonoBehaviour:
   getHeartSound: {fileID: 8300000, guid: f9b1248ddca5cfa4ca09356c2a855af5, type: 3}
   dedSound: {fileID: 8300000, guid: 2d45998c264e4734d850412027cd0ae5, type: 3}
   reloadSound: {fileID: 8300000, guid: 68bfaa5f88d7ac5458123ca1102b6a78, type: 3}
+  explodeSound: {fileID: 0}
 --- !u!82 &1262666361
 AudioSource:
   m_ObjectHideFlags: 0
