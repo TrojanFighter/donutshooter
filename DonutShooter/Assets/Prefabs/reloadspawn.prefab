@@ -35,8 +35,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803324542238272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.78, y: 12.9604, z: 0}
-  m_LocalScale: {x: 2.9114542, y: 2.9114537, z: 2.9114537}
+  m_LocalPosition: {x: -13.837387, y: 10.635876, z: 9.362238}
+  m_LocalScale: {x: 2.7257726, y: 2.7257721, z: 2.7257721}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,10 +52,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93afae935544e2f4ea5e009515192518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 330
-  reload1: {fileID: 1473213068203592, guid: 21db4bd0b8f2b4b47aa8666ff28786cd, type: 2}
-  reload2: {fileID: 1373068097692892, guid: d8e6358a2174e43449fc9bd60b50598c, type: 2}
-  reload3: {fileID: 1483696124895016, guid: 513baf5bd35b4d44196d27996908be27, type: 2}
+  spawnRate: 340
+  reloadprefabs:
+  - {fileID: 1443304203275262, guid: 7d24daaadbde2764b9c40c4c9702f251, type: 2}
+  - {fileID: 1473213068203592, guid: 21db4bd0b8f2b4b47aa8666ff28786cd, type: 2}
+  - {fileID: 1373068097692892, guid: d8e6358a2174e43449fc9bd60b50598c, type: 2}
+  - {fileID: 1483696124895016, guid: 513baf5bd35b4d44196d27996908be27, type: 2}
 --- !u!212 &212735136175151374
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -65,6 +67,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -80,6 +83,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

@@ -211,7 +211,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!58 &58032166905507678
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -278,11 +278,12 @@ MonoBehaviour:
   m_ColorState: 1
   hitten: 0
   isMoving: 0
-  hitpoints: 8
+  hitpoints: 10
   hittext: {fileID: 114627649522647440}
-  movingSpeed: 0.8
+  movingSpeed: 1
   blood: {fileID: 1164239357549924, guid: 317f0ed83ff8ec944822ece3fadda158, type: 2}
   love: {fileID: 1253376498759346, guid: 92807ce6ca9fed343befee998ca3d09b, type: 2}
+  explosionPrefab: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 2}
 --- !u!114 &114331111974703990
 MonoBehaviour:
   m_ObjectHideFlags: 1

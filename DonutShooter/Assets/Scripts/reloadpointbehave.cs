@@ -10,17 +10,20 @@ public class reloadpointbehave : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+		StartCoroutine(SelfDestroy());
 	}
-	
+
+	IEnumerator SelfDestroy()
+	{
+		yield return new WaitForSeconds(lifespan);
+		Destroy(this.gameObject);
+	}
+
 	// Update is called once per frame
 	void Update () {
+		if(movingSpeed!=0f)
         transform.Translate(0, -movingSpeed, Time.deltaTime);
-        lifespan -= Time.deltaTime;
-        if (lifespan <= 0)
-        {
-            Destroy(this.gameObject);
-        }
 	}
 }

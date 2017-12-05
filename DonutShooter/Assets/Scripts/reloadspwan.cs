@@ -7,18 +7,10 @@ public class reloadspwan : MonoBehaviour {
     private float spawnTimer;
     private int chancer;
     private int chancer2;
-    private int red;
-    private int green;
-    private int blue;
-    public GameObject reload1;
-    public GameObject reload2;
-    public GameObject reload3;
+
+    public GameObject[] reloadprefabs;
 
 
-	// Use this for initialization
-	void Start () {     
-		
-	}
 
 
     // Update is called once per frame
@@ -26,31 +18,25 @@ public class reloadspwan : MonoBehaviour {
         spawnTimer += 1;
         if (Time.frameCount % spawnRate == 0)
         {
-            chancer = Random.Range(0, 3);
-            if (chancer < 1 )
+            chancer = Random.Range(0, 4);
+            if (chancer==1)
             {
-                Instantiate(reload1, transform.position, Quaternion.identity);
-                red += 1;
-                green = 0;
-                blue = 0;
-                
+                Instantiate(reloadprefabs[1], transform.position, Quaternion.identity);
 
             }
-            if (chancer < 2 && chancer >= 1)
+            else if (chancer == 2)
             {
-                Instantiate(reload2, transform.position, Quaternion.identity);
-                green += 1;
-                red = 0;
-                blue = 0;
+                Instantiate(reloadprefabs[2], transform.position, Quaternion.identity);
 
             }
-            if (chancer<3 && chancer >= 2)
+            else if (chancer== 3)
             {
-                Instantiate(reload3, transform.position, Quaternion.identity);
-                blue += 1;
-                red = 0;
-                green = 0;
+                Instantiate(reloadprefabs[3], transform.position, Quaternion.identity);
 
+            }
+            else
+            {
+                Instantiate(reloadprefabs[0], transform.position, Quaternion.identity);
             }
           
         }

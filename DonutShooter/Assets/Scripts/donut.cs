@@ -22,11 +22,11 @@ public class donut : MonoBehaviour
 	    inited = true;
 	}
 
-    public void InitDonut(Vector3 target)
+    public void InitDonut(Vector3 target,float speed=20f)
     {
         Init();
-        rb.velocity = new Vector2((target - transform.position).x,(target - transform.position).y ).normalized*20f;
-        StartCoroutine(SelfDestroy());
+        rb.velocity = new Vector2((target - transform.position).x,(target - transform.position).y ).normalized*speed;
+        //StartCoroutine(SelfDestroy());
     }
 
     // Update is called once per frame
@@ -39,9 +39,14 @@ public class donut : MonoBehaviour
 		
 	}
 
-    IEnumerator SelfDestroy()
+    IEnumerator DelayedSelfDestroy()
     {
         yield return new WaitForSeconds(lifespan);
+        Destroy(gameObject);
+    }
+
+    public void SelfDestroy()
+    {
         Destroy(gameObject);
     }
 
@@ -53,7 +58,7 @@ public class donut : MonoBehaviour
             hitObject.GetComponent<zombie>().HitByColor(m_ColorState);
             if (hitObject.GetComponent<zombie>().m_ColorState == m_ColorState)
             {
-                Destroy(this.gameObject);
+                //Destroy(this.gameObject);
             }
             /*if (hitObject.GetComponent<zombie>().m_ColorState != m_ColorState)
             {

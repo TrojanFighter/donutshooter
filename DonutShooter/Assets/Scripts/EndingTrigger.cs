@@ -9,5 +9,9 @@ public class EndingTrigger : MonoBehaviour {
     {// game should be over by now 
         Application.LoadLevel("ending");
     }
+      if (other.GetComponent<donut>())
+      {// game should be over by now 
+          other.GetComponent<donut>().SelfDestroy();
+      }
   }
 }

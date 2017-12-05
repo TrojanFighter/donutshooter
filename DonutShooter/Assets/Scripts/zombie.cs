@@ -17,7 +17,7 @@ public class zombie : MonoBehaviour {
     Collider2D m_collider;
     bool hitbyplayer;
     public GameObject blood;
-    public GameObject love;
+    public GameObject love,explosionPrefab;
     GameObject love1;
 
 
@@ -46,16 +46,25 @@ public class zombie : MonoBehaviour {
             }
         }
         hittext.text = hitpoints.ToString();
-        if (hitpoints <= 0)
+        /* (hitpoints <= 0)
         {
-            Instantiate(blood, transform.position, Quaternion.identity);
+            //Instantiate(blood, transform.position, Quaternion.identity);
             score.SendMessage("killed");
             score.SendMessage("ded");
-            Destroy(this.gameObject);
+            SelfDestory(true);
            
-        }
+        }*/
 		
 	}
+
+    public void SelfDestory(bool isExplosion = false)
+    {
+        Instantiate(blood, transform.position, Quaternion.identity);
+        if(isExplosion)
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject hitObject = collision.collider.gameObject;
@@ -87,7 +96,10 @@ public class zombie : MonoBehaviour {
                 hitpoints -= 1;
                 score.SendMessage("hit");
             }*/
-            HitByColor(hitObject.GetComponent<donut>().m_ColorState);
+            if (HitByColor(hitObject.GetComponent<donut>().m_ColorState))
+            {
+                hitObject.GetComponent<donut>().SelfDestroy();
+            }
         }
         else if (hitObject.GetComponent<player>())
         {
@@ -117,24 +129,52 @@ public class zombie : MonoBehaviour {
                 score.SendMessage("hit");
             }
             */
-            HitByColor(hitObject.GetComponent<player>().m_ColorState,10);
-            //hitObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-200f,0));
+            if (hitObject.GetComponent<player>().isRolling)
+            {
+            
+            HitByColor(hitObject.GetComponent<player>().m_ColorState, 2);
+                Vector2 hitbackForce = new Vector2(-70f, 0);
+                if(collision.contacts.Length>0)
+                    hitbackForce=(collision.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized *70f;
+            //Debug.Log("hitbackForce: " + hitbackForce);
+            hitObject.GetComponent<Rigidbody2D>().AddForce(hitbackForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                if (hitObject.GetComponent<player>().extradonutnum > 0)
+                {
+                    hitObject.GetComponent<player>().extradonutnum--;
+                    hitObject.GetComponent<player>().donutnum =hitObject.GetComponent<player>().magazinedonutnum +hitObject.GetComponent<player>().extradonutnum;
+                    HitByColor(hitObject.GetComponent<player>().m_ColorState, 10);
+                }
+                else if (hitObject.GetComponent<player>().magazinedonutnum > 0)
+                {
+                    hitObject.GetComponent<player>().magazinedonutnum--;
+                    hitObject.GetComponent<player>().donutnum =hitObject.GetComponent<player>().magazinedonutnum +hitObject.GetComponent<player>().extradonutnum;
+                    HitByColor(hitObject.GetComponent<player>().m_ColorState, 10);
+                }
+            }
+        //GetComponent<Collider2D>().
         }
         else if (hitObject.GetComponent<zombie>())
         {
             if (isMoving)
             {
                 hitpoints = hitObject.GetComponent<zombie>().RamByZombie(hitpoints, m_ColorState);
-                if (hitpoints <= 0)
+                if (hitpoints == 0)
                 {
-                    Destroy(gameObject);
+                    SelfDestory(true);
+                }
+                else if(hitpoints<0)
+                {
+                    SelfDestory(false);
                 }
             }
         }
 
     }
 
-    public void HitByColor(ColorState colorState,int hpHit=1)
+    public bool HitByColor(ColorState colorState,int hpHit=1)
     {
         if (m_ColorState == colorState)
             //get the right donut, and turn back.
@@ -142,7 +182,6 @@ public class zombie : MonoBehaviour {
             hitbyplayer = true;
             //m_collider.enabled = !m_collider.enabled;
             score.SendMessage("returned");
-            score.SendMessage("getheart");
             if (!hitten)
             {
                 flip = this.gameObject.transform.localScale.x;
@@ -153,37 +192,47 @@ public class zombie : MonoBehaviour {
             love1 = Instantiate(love, pos, Quaternion.identity);
             love1.transform.parent = this.transform;
             isMoving = true;
+            return true;
         }
         else
         {
             hitpoints -= hpHit;
+            if (hitpoints <= 0)
+            {
+                //Instantiate(blood, transform.position, Quaternion.identity);
+                score.SendMessage("killed");
+                SelfDestory(true);
+           
+            }
+            return false;
             //score.SendMessage("hit");
         }
     }
 
     public int RamByZombie(int ramhitpoint,ColorState ramcolor)
     {
-        if (ramcolor != m_ColorState)
+        if (ramcolor != m_ColorState)//颜色不同 互撸
         {
             //hitpoints -= ramhitpoint;
             //if(m_ColorState==ColorState.Red)
-            if (hitpoints < ramhitpoint)
+            if (hitpoints <= ramhitpoint)//外来撞击者血条更高
             {
                 ramhitpoint -= hitpoints;
-                Destroy(gameObject);
+                SelfDestory(true);
                 //Debug.Log("ramhitpoint:"+ramhitpoint+"  hitpoint left"+hitpoints+"  point left:"+(ramhitpoint - hitpoints));
-                return ramhitpoint;
+                score.SendMessage("killed");
+                return ramhitpoint;//销毁本物体，返回剩余血量
             }
             else
             {
                 hitpoints -= ramhitpoint;
-                return ramhitpoint;
+                return 0;//通知撞击者自我销毁
             }
         }
-        else
+        else//颜色相同 合体
         {
             hitpoints += ramhitpoint;
-            return 0;
+            return -1;
         }
     }
 }
